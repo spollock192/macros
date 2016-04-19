@@ -1,9 +1,11 @@
 Sub Body()
-'
-' Body Macro for IEEE 2 column
-'
+'Author Stu
+'Macro for IEEE 2 column that will format a word document to have proper margins, line spacing, font.
+'*WARNING:zRUN THIS MACRO BEFORE RUNNING ANY OTHER MACRO, THIS MACRO AFFECTS ALL TEXT IN DOCUMENT*
 '
     Selection.WholeStory
+'
+'Changes page margins
     With Selection.PageSetup
         .LineNumbering.Active = False
         .Orientation = wdOrientPortrait
@@ -30,6 +32,8 @@ Sub Body()
         .BookFoldPrintingSheets = 1
         .GutterPos = wdGutterPosLeft
     End With
+    
+'Changes line spacing
     With Selection.ParagraphFormat
         .LeftIndent = InchesToPoints(0)
         .RightIndent = InchesToPoints(0)
@@ -56,6 +60,8 @@ Sub Body()
         .TextboxTightWrap = wdTightNone
         .CollapsedByDefault = False
     End With
+    
+'Justifies text
     With Selection.ParagraphFormat
         .LeftIndent = InchesToPoints(0)
         .RightIndent = InchesToPoints(0)
@@ -82,6 +88,8 @@ Sub Body()
         .TextboxTightWrap = wdTightNone
         .CollapsedByDefault = False
     End With
+    
+'Puts text into two columns
     Selection.WholeStory
     If ActiveWindow.View.SplitSpecial <> wdPaneNone Then
         ActiveWindow.Panes(2).Close
@@ -95,7 +103,10 @@ Sub Body()
         .LineBetween = False
         .Width = InchesToPoints(3.5)
         .Spacing = InchesToPoints(0.25)
+        
+'Changes font into times new roman
     End With
         Selection.WholeStory
         Selection.font.Name = "Times New Roman"
+'need font size change here
 End Sub
